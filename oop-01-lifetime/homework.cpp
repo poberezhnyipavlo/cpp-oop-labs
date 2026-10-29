@@ -1,3 +1,4 @@
+#include "Room.h"
 #include "ScopeTimer.h"
 #include "Tracer.h"
 
@@ -52,6 +53,10 @@ void uniquePtrArray() {
     items[2] = std::make_unique<Tracer>("Tracer 3");
 }
 
+void memberOrder() {
+    Room room{"door", "window", "floor"};
+}
+
 int main() {
     std::cout << "Starting ..." << std::endl;
 
@@ -61,8 +66,10 @@ int main() {
     //     std::cout << e.what() << std::endl;
     // }
 
-    uniquePtrArray();
+    // uniquePtrArray();
 
-    std::cout << "трасерів залишилося: " << Tracer::alive() << std::endl;
+    memberOrder();
+
+    // std::cout << "трасерів залишилося: " << Tracer::alive() << std::endl;
     std::cout << "ending ..." << std::endl;
 }

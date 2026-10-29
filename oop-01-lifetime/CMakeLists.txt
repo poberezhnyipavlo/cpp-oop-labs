@@ -25,4 +25,5 @@ add_executable(oop-01
 add_executable(oop-01-homework
         homework.cpp
         Tracer.cpp
+        Room.h
 )
