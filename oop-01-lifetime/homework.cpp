@@ -1,4 +1,5 @@
 #include "ScopeTimer.h"
+#include "Tracer.h"
 
 void busyWork() {
     volatile long sum = 0;
@@ -19,8 +20,49 @@ void nestedTimers() {
     busyWork();
 }
 
+void rawHeapArray() {
+    Tracer* items[3]{};
+
+    items[0] = new Tracer("Tracer 0");
+    items[1] = new Tracer("Tracer 1");
+    items[2] = new Tracer("Tracer 2");
+
+    for (const Tracer* item : items) {
+        delete item;
+    }
+}
+
+void rawHeapArrayWithException() {
+    Tracer* items[3]{};
+
+    items[0] = new Tracer("Tracer 0");
+    items[1] = new Tracer("Tracer 1");
+    throw std::runtime_error{"шось пішло не так"};
+    items[2] = new Tracer("Tracer 2");
+
+    for (const Tracer* item : items) {
+        delete item;
+    }
+}
+
+void uniquePtrArray() {
+    std::unique_ptr<Tracer> items[3]{};
+    items[0] = std::make_unique<Tracer>("Tracer 0");
+    items[1] = std::make_unique<Tracer>("Tracer 1");
+    items[2] = std::make_unique<Tracer>("Tracer 3");
+}
+
 int main() {
     std::cout << "Starting ..." << std::endl;
-    nestedTimers();
+
+    // try {
+    //     rawHeapArrayWithException();
+    // } catch (std::exception& e) {
+    //     std::cout << e.what() << std::endl;
+    // }
+
+    uniquePtrArray();
+
+    std::cout << "трасерів залишилося: " << Tracer::alive() << std::endl;
     std::cout << "ending ..." << std::endl;
 }
