@@ -19,4 +19,10 @@ add_executable(oop-01
         main.cpp
         Tracer.cpp
         Car.cpp
+        ScopeTimer.h
+)
+
+add_executable(oop-01-homework
+        homework.cpp
+        Tracer.cpp
 )
