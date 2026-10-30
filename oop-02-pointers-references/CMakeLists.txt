@@ -19,3 +19,8 @@ add_executable(oop-02
         main.cpp
         Tracer.cpp
 )
+
+add_executable(oop-02-homework
+        homework.cpp
+        Tracer.cpp
+)
