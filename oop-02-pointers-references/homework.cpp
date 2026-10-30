@@ -54,6 +54,43 @@ void swapNames() {
     }
 }
 
+Tracer* findByName(Tracer* items[], std::size_t count, const std::string& name) {
+    for (std::size_t i = 0; i < count; ++i) {
+        if (items[i] && items[i]->name() == name) {
+            return items[i];
+        }
+    }
+
+    return nullptr;
+}
+
+void find() {
+    Tracer a{"a"};
+    Tracer b{"b"};
+    Tracer c{"c"};
+
+    Tracer* items[] = { &a, &b, &c };
+
+    Tracer* found = findByName(items, std::size(items), "a");
+    if (found) {
+        std::cout << "знайдено: " << found->name() << std::endl;
+        found->rename("renamed");
+    }
+
+    Tracer* found_renamed = findByName(items, std::size(items), "renamed");
+    if (found_renamed) {
+        std::cout << "знайдено: " << found->name() << std::endl;
+        found->rename("renamed 2");
+    }
+
+    Tracer* not_found = findByName(items, std::size(items), "not_found");
+    if (not_found == nullptr) {
+        std::cout << "не знайдено not_found" << std::endl;
+    }
+}
 int main() {
-    swapNames();
+    // swapNames();
+    find();
+
+    return 0;
 }
