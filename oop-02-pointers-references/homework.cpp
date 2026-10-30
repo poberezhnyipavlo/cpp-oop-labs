@@ -29,7 +29,6 @@ void renameByRef(Tracer& one, Tracer& two) {
     one.rename(temp_two_name);
 }
 
-
 void swapNames() {
     {
         std::cout << std::endl << "renameByValue" << std::endl;
@@ -88,9 +87,32 @@ void find() {
         std::cout << "не знайдено not_found" << std::endl;
     }
 }
+
+const Tracer& longerName(const Tracer& one, const Tracer& two) {
+    return one.name().length() > two.name().length() ? one : two;
+};
+
+void longerNameOfVariables() {
+    Tracer one{"one"};
+    Tracer two{"two-two"};
+
+    const Tracer& r = longerName(one, two);
+
+    std::cout << "найдовше імя: " << r.name() << std::endl;
+}
+
+void longerNameOfTemporaries() {
+    const Tracer& r = longerName(Tracer{"one-one"}, Tracer{"two"});
+
+    std::cout << "найдовше імя: " << r.name() << std::endl;
+}
+
 int main() {
     // swapNames();
-    find();
+    // find();
 
+    // longerNameOfVariables();
+
+    longerNameOfTemporaries();
     return 0;
 }
