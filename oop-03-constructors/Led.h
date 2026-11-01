@@ -11,6 +11,8 @@ public:
 
     void print() const;
 
+    std::string name() const { return name_; }
+
 private:
     const int pin_;
     std::string name_;
