@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <cstddef>
 
 #include "Sensor.h"
 #include "Tracer.h"

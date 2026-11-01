@@ -1,6 +1,9 @@
 #include "Sensor.h"
 
 #include <iostream>
+#include <string>
+
+#include "Tracer.h"
 
 Sensor::Sensor(int id, const std::string& name, const Tracer& board, double threshold)
     : id_(id), name_(name), board_(board), threshold_(threshold) {
