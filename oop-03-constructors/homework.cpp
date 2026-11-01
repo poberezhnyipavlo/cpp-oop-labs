@@ -36,9 +36,24 @@ void implicitConversion() {
     blink(status);
 }
 
+void stringBraces() {
+    std::string a(3, 'x');
+    std::string b{3, 'x'};
+
+    std::cout << "stringBraces" << std::endl;
+
+    std::cout << "a: " << a << ", size: " << a.size() << std::endl;
+    for (auto ch : b) {
+        std::cout << static_cast<int>(ch) << std::endl;
+    }
+    std::cout << "b size: " << b.size() << std::endl;
+}
+
 int main() {
     // ledConstructors();
 
-    implicitConversion();
+    // implicitConversion();
+
+    stringBraces();
     return 0;
 }
