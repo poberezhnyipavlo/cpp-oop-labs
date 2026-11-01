@@ -21,7 +21,7 @@ add_executable(oop-03
         Sensor.cpp
 )
 
-#add_executable(oop-02-homework
-#        homework.cpp
-#        Tracer.cpp
-#)
+add_executable(oop-03-homework
+        homework.cpp
+        Led.cpp
+)
