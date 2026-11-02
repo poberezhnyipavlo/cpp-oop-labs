@@ -30,9 +30,16 @@ double ReadingBuffer::average() const {
     return cached_average_;
 }
 
-double& ReadingBuffer::at(std::size_t index) {
-    std::cout << "      [at]" << std::endl;
-    return readings_.at(index);
+bool ReadingBuffer::set(std::size_t index, double value) {
+    if (value < kMinCelsius || value > kMaxCelsius) {
+        std::cout << "      [set] відхилено " << value << std::endl;
+        return false;
+    }
+
+    readings_.at(index) = value;
+    invalidateCache();
+
+    return true;
 }
 
 double ReadingBuffer::at(std::size_t index) const {

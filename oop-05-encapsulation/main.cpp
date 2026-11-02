@@ -71,7 +71,7 @@ void leakyReference() {
     std::cout << "view.at(0) = " << first << std::endl;
     printSummary(buffer);
 
-    buffer.at(0) = 100.0;
+    buffer.set(0, 100.0);
     printSummary(buffer);
     dumpRaw(buffer);
 }

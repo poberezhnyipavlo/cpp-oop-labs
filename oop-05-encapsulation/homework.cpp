@@ -41,8 +41,25 @@ void cachedMaximum() {
     std::cout << "max = " << max << ", average = " << average << std::endl;
 }
 
+void fixLeak() {
+    ReadingBuffer buffer;
+    buffer.add(20.0);
+    buffer.add(22.0);
+    buffer.add(24.0);
+    buffer.average();
+    dumpRaw(buffer);
+    buffer.set(0, 100);
+    buffer.average();
+    dumpRaw(buffer);
+
+    buffer.set(0, -300);
+    buffer.average();
+    dumpRaw(buffer);
+}
+
 int main() {
     // thermostat();
-    cachedMaximum();
+    // cachedMaximum();
+    fixLeak();
     return 0;
 }

@@ -15,7 +15,7 @@ public:
     double average() const;
     double maximum() const;
 
-    double& at(std::size_t index);
+    bool set(std::size_t index, double value);
     double at(std::size_t index) const;
 
 private:
