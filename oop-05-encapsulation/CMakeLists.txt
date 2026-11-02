@@ -21,6 +21,8 @@ add_executable(oop-05
         ReadingBuffer.h
 )
 
-#add_executable(oop-05-homework
-#        homework.cpp
-#)
+add_executable(oop-05-homework
+        homework.cpp
+        Thermostat.cpp
+        Thermostat.h
+)
