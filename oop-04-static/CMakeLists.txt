@@ -21,8 +21,8 @@ add_executable(oop-04
         Sensor.cpp
         Boards.cpp
 )
-#
-#add_executable(oop-04-homework
-#        homework.cpp
-#        Led.cpp
-#)
+
+add_executable(oop-04-homework
+        homework.cpp
+        TicketMachine.cpp
+)
