@@ -11,6 +11,6 @@ AppConfig loadConfig() {
 // Локальна static створюється при першому зверненні, тому її не зачіпає порядок ініціалізації
 // глобальних об'єктів між файлами (як kEarlySensor у globals). Плюс конфіг вантажиться лише якщо потрібен.
 const AppConfig& appConfig() {
-    static const AppConfig config = loadConfig();
-    return config;
+    static const AppConfig kConfig = loadConfig();
+    return kConfig;
 }

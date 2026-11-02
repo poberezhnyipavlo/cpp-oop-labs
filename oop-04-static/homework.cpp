@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ostream>
+#include <string>
 
 #include "AppConfig.h"
 #include "TicketMachine.h"
@@ -30,8 +31,19 @@ void lazyConfig() {
     std::cout << "отриманий конфіг: {device=" << config3.device << " port= " << config3.port << "}" << std::endl;
 }
 
+namespace {
+std::string formatId(int id) {
+    return "A-" + std::to_string(id);
+}
+
+void linkageDemo() {
+    const std::string s = formatId(1);
+    std::cout << s << std::endl;
+}
+} // namespase
 int main() {
     // ticketMachines();
-    lazyConfig();
+    // lazyConfig();
+    linkageDemo();
     return 0;
 }
