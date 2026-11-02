@@ -1,3 +1,7 @@
+#include <iostream>
+#include <ostream>
+
+#include "ReadingBuffer.h"
 #include "Thermostat.h"
 
 void thermostat() {
@@ -17,7 +21,28 @@ void thermostat() {
     t.update(22.2);
     printStatus(t);
 }
+
+void cachedMaximum() {
+    ReadingBuffer buffer;
+    buffer.add(10);
+    auto max = buffer.maximum();
+    auto average = buffer.average();
+    std::cout << "max = " << max << ", average = " << average << std::endl;
+    buffer.add(100);
+    max = buffer.maximum();
+    average = buffer.average();
+    std::cout << "max = " << max << ", average = " << average << std::endl;
+    max = buffer.maximum();
+    average = buffer.average();
+    std::cout << "max = " << max << ", average = " << average << std::endl;
+    buffer.add(20);
+    max = buffer.maximum();
+    average = buffer.average();
+    std::cout << "max = " << max << ", average = " << average << std::endl;
+}
+
 int main() {
-    thermostat();
+    // thermostat();
+    cachedMaximum();
     return 0;
 }

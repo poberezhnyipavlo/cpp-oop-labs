@@ -42,6 +42,17 @@ double ReadingBuffer::at(std::size_t index) const {
 
 void ReadingBuffer::invalidateCache() {
     cache_valid_ = false;
+    cached_max_valid_ = false;
+}
+
+double ReadingBuffer::maximum() const {
+    if (!cached_max_valid_) {
+        ++recomputations_;
+        std::cout << "      [recompute max]" << std::endl;
+        cached_max_ = readings_.empty() ? 0.0 : std::ranges::max(readings_);
+        cached_max_valid_ = true;
+    }
+    return cached_max_;
 }
 
 void dumpRaw(const ReadingBuffer& buffer) {
@@ -50,7 +61,9 @@ void dumpRaw(const ReadingBuffer& buffer) {
         std::cout << ' ' << value;
     }
     std::cout << ", cache_valid_ = " << buffer.cache_valid_
+    << ", cached_max_valid_ = " << buffer.cached_max_valid_
     << ", cached_average_ = " << buffer.cached_average_
+    << ", cached_max_ = " << buffer.cached_max_
     << ", recomputations_ = " << buffer.recomputations_
     << std::endl;
 }

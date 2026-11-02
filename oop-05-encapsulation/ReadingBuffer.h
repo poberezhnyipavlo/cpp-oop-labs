@@ -13,6 +13,7 @@ public:
 
     std::size_t size() const;
     double average() const;
+    double maximum() const;
 
     double& at(std::size_t index);
     double at(std::size_t index) const;
@@ -23,7 +24,9 @@ private:
     std::vector<double> readings_;
 
     mutable double cached_average_ = 0.0;
+    mutable double cached_max_ = 0.0;
     mutable bool cache_valid_ = false;
+    mutable bool cached_max_valid_ = false;
     mutable int recomputations_ = 0;
 
     friend void dumpRaw(const ReadingBuffer& buffer);
