@@ -25,4 +25,5 @@ add_executable(oop-04
 add_executable(oop-04-homework
         homework.cpp
         TicketMachine.cpp
+        AppConfig.cpp
 )
