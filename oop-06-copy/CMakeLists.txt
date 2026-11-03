@@ -21,6 +21,8 @@ add_executable(oop-06
         FrameBuffer.h
 )
 
-#add_executable(oop-06-homework
-#        homework.cpp
-#)
+add_executable(oop-06-homework
+        homework.cpp
+        Message.cpp
+        Message.h
+)
