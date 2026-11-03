@@ -2,6 +2,7 @@
 #include <utility>
 
 #include "Message.h"
+#include "UartPort.h"
 
 void messageMoves() {
     Message a{"hello"};
@@ -17,7 +18,19 @@ void messageMoves() {
     std::cout << "кількість перенесень Message: " << Message::moves() << std::endl;
 }
 
+UartPort openConsole() {
+    return UartPort{20};
+}
+
+void uartTransfer() {
+    UartPort console = openConsole();
+
+    std::vector<UartPort> ports;
+    ports.push_back(std::move(console));
+}
+
 int main() {
-    messageMoves();
+    // messageMoves();
+    uartTransfer();
     return 0;
 }
