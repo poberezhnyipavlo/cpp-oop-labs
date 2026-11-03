@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include <utility>
 
 FrameBuffer::FrameBuffer(const std::string& name, std::size_t size)
     : name_(name), size_(size), pixels_(new std::uint8_t[size_]{}) {
@@ -17,18 +18,11 @@ FrameBuffer::FrameBuffer(const FrameBuffer& other)
     std::cout << "      [copy] " << name_ << std::endl;
 }
 
-FrameBuffer& FrameBuffer::operator=(const FrameBuffer& other) {
-    std::cout << "      [copy=] " << name_ << " <- " << other.name_ << std::endl;
-    if (this == &other) {
-        return *this;
-    }
-
-    auto* fresh = new std::uint8_t[other.size_];
-    std::copy(other.pixels_, other.pixels_ + other.size(), fresh);
-    delete[] pixels_;
-    pixels_ = fresh;
-    size_ = other.size_;
-    name_ = other.name_;
+FrameBuffer& FrameBuffer::operator=(FrameBuffer other) {
+    std::cout << "      [copy=] " << name_ << std::endl;
+    std::swap(name_, other.name_);
+    std::swap(size_, other.size_);
+    std::swap(pixels_, other.pixels_);
 
     return *this;
 }

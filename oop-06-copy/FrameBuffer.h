@@ -9,7 +9,7 @@ class FrameBuffer {
 public:
     FrameBuffer(const std::string& name, std::size_t size);
     FrameBuffer(const FrameBuffer& other);
-    FrameBuffer& operator=(const FrameBuffer& other);
+    FrameBuffer& operator=(FrameBuffer other);
     ~FrameBuffer();
 
     void fill(std::uint8_t value);
