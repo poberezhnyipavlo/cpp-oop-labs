@@ -25,4 +25,6 @@ add_executable(oop-06-homework
         homework.cpp
         Message.cpp
         Message.h
+        UartPort.cpp
+        UartPort.h
 )
