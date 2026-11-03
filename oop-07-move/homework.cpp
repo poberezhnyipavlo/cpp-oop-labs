@@ -29,8 +29,21 @@ void uartTransfer() {
     ports.push_back(std::move(console));
 }
 
+void noexceptMatters() {
+    std::vector<Message> messages;
+
+    for (int i = 0; i < 10; i++) {
+        messages.push_back(Message{"msg"});
+    }
+
+    std::cout << "кількість копій: " << Message::copies() << std::endl;
+    std::cout << "кількість перенесень: " << Message::moves() << std::endl;
+}
+
 int main() {
     // messageMoves();
-    uartTransfer();
+    // uartTransfer();
+
+    noexceptMatters();
     return 0;
 }
