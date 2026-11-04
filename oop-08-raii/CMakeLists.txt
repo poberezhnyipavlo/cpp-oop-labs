@@ -23,6 +23,8 @@ add_executable(oop-08
         Logger.h
 )
 
-#add_executable(oop-08-homework
-#        homework.cpp
-#)
+add_executable(oop-08-homework
+        homework.cpp
+        Socket.cpp
+        Socket.h
+)

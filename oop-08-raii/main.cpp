@@ -17,7 +17,7 @@ const char* yesNo(bool value) {
 }
 
 // Скільки дескрипторів зараз відкрито в процесі (на Linux і macOS — записи в /dev/fd).
-long openDescription() {
+long openDescriptors() {
     return std::distance(
         std::filesystem::directory_iterator{"/dev/fd"},
         std::filesystem::directory_iterator{}
@@ -32,13 +32,13 @@ const std::string kBadPath = "/no-such-dir/oop8.log";
 
 // 1. RAII: ресурс живе рівно стільки, скільки об'єкт.
 void raiiBasic() {
-    const long base = openDescription();
+    const long base = openDescriptors();
     {
         File file{tempPath("oop08-basic.log")};
         file.write("hello\n");
-        std::cout << "усередині блоку: +" << openDescription() - base << " дескрипторів" << std::endl;
+        std::cout << "усередині блоку: +" << openDescriptors() - base << " дескрипторів" << std::endl;
     }
-    std::cout << "після блоку: +" << openDescription() - base << std::endl;
+    std::cout << "після блоку: +" << openDescriptors() - base << std::endl;
 }
 
 // 2. Ручне керування: ранній return пропускає fclose.
@@ -68,11 +68,11 @@ bool writeWithRaii(const std::string& path, bool fail) {
 }
 
 void manualLeak() {
-    const long base = openDescription();
+    const long base = openDescriptors();
     writeManually(tempPath("oop08-manual.log"), true);
-    std::cout << "після writeManually: +" << openDescription() - base << std::endl;
+    std::cout << "після writeManually: +" << openDescriptors() - base << std::endl;
     writeWithRaii(tempPath("oop08-raii.log"), true);
-    std::cout << "після writeWithRaii: +" << openDescription() - base << std::endl;
+    std::cout << "після writeWithRaii: +" << openDescriptors() - base << std::endl;
 }
 
 // 3. Конструктор кинув виняток: об'єкта не існує, деструктора не буде.
