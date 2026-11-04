@@ -27,4 +27,6 @@ add_executable(oop-08-homework
         homework.cpp
         Socket.cpp
         Socket.h
+        FrameBuffer.h
+        FrameBuffer.cpp
 )
