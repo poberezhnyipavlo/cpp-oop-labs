@@ -14,6 +14,9 @@ Transaction::~Transaction() {
 }
 
 void Transaction::commit() {
+    if (committed_) {
+        return;
+    }
     committed_ = true;
     std::cout << "      [commit] " << name_ << std::endl;
 }

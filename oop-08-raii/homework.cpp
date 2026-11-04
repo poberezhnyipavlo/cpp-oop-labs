@@ -71,6 +71,8 @@ Transaction makeTxn() {
 void transactionScope() {
     {
         Transaction tx = makeTxn();
+        tx.commit();
+        tx.commit();
     }
 
     {
