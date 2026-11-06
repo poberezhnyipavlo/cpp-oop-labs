@@ -23,12 +23,12 @@ add_executable(oop-09
         Peer.h
 )
 
-#add_executable(oop-09-homework
-#        homework.cpp
-#        Socket.cpp
-#        Socket.h
-#        FrameBuffer.h
-#        FrameBuffer.cpp
-#        Transaction.cpp
-#        Transaction.h
-#)
+add_executable(oop-09-homework
+        homework.cpp
+        SensorRegistry.cpp
+        SensorRegistry.h
+        Tracer.cpp
+        Tracer.h
+        TracerCache.cpp
+        TracerCache.h
+)
