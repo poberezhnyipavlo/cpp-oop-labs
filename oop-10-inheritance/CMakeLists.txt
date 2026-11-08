@@ -25,6 +25,16 @@ add_executable(oop-10
         TemperatureSensor.h
 )
 
-#add_executable(oop-10-homework
-#        homework.cpp
-#)
+add_executable(oop-10-homework
+        homework.cpp
+        Relay.cpp
+        Relay.h
+        Device.h
+        Device.cpp
+        TemperatureSensor.cpp
+        TemperatureSensor.h
+        Tracer.h
+        Tracer.cpp
+        DhtSensor.cpp
+        DhtSensor.h
+)
