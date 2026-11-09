@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(oop_02_pointers_references LANGUAGES CXX)
+project(oop_07_move LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
