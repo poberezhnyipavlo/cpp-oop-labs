@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.20)
+project(oop_11_polymorphism LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+option(SANITIZE "AddressSanitizer + UBSan" OFF)
+
+add_compile_options(-Wall -Wextra -Werror)
+
+if(SANITIZE)
+    add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer)
+    add_link_options(-fsanitize=address,undefined)
+endif()
+
+add_executable(oop-11
+        main.cpp
+        Device.cpp
+        Device.h
+        TemperatureSensor.cpp
+        TemperatureSensor.h
+        Relay.h
+        Relay.cpp
+)
+
+#add_executable(oop-11-homework
+#        homework.cpp
+#        Relay.cpp
+#        Relay.h
+#        Device.h
+#        Device.cpp
+#        TemperatureSensor.cpp
+#        TemperatureSensor.h
+#        Tracer.h
+#        Tracer.cpp
+#        DhtSensor.cpp
+#        DhtSensor.h
+#)
