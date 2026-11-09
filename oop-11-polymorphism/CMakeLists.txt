@@ -25,16 +25,18 @@ add_executable(oop-11
         Relay.cpp
 )
 
-#add_executable(oop-11-homework
-#        homework.cpp
-#        Relay.cpp
-#        Relay.h
-#        Device.h
-#        Device.cpp
-#        TemperatureSensor.cpp
-#        TemperatureSensor.h
-#        Tracer.h
-#        Tracer.cpp
-#        DhtSensor.cpp
-#        DhtSensor.h
-#)
+add_executable(oop-11-homework
+        homework.cpp
+        Relay.cpp
+        Relay.h
+        Device.h
+        Device.cpp
+        TemperatureSensor.cpp
+        TemperatureSensor.h
+        Buzzer.cpp
+        Buzzer.h
+        DeviceRegistry.cpp
+        DeviceRegistry.h
+        FakeReadable.cpp
+        FakeReadable.h
+)
