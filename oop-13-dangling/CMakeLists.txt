@@ -27,3 +27,13 @@ add_executable(oop-13
         Sensor.h
 )
 
+
+add_executable(oop-13-homework
+        homework.cpp
+        SensorList.cpp
+        SensorList.h
+        Sensor.cpp
+        Sensor.h
+        StableSensorList.cpp
+        StableSensorList.h
+)
