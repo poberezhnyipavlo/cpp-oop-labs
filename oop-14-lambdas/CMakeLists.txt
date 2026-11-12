@@ -32,13 +32,11 @@ add_executable(oop-14
 
 target_link_libraries(oop-14 PRIVATE Threads::Threads)
 
-#
-#add_executable(oop-14-homework
-#        homework.cpp
-#        SensorList.cpp
-#        SensorList.h
-#        Sensor.cpp
-#        Sensor.h
-#        StableSensorList.cpp
-#        StableSensorList.h
-#)
+
+add_executable(oop-14-homework
+        homework.cpp
+        EventBus.cpp
+        EventBus.h
+        TemperatureMonitor.cpp
+        TemperatureMonitor.h
+)
