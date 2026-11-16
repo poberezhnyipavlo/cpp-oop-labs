@@ -28,7 +28,10 @@ add_executable(oop-15
         Sampling.h
 )
 
-#
-#add_executable(oop-15-homework
-#        homework.cpp
-#)
+add_executable(oop-15-homework
+        homework.cpp
+        RingBuffer.h
+        Sensor.cpp
+        Sensor.h
+        Barometer.h
+)
