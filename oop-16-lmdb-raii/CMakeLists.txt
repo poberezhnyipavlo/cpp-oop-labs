@@ -29,8 +29,15 @@ add_library(
 target_include_directories(lmdb_raii PUBLIC ${LMDB_INCLUDE_DIR})
 target_link_libraries(lmdb_raii PUBLIC ${LMDB_LIBRARY} Threads::Threads)
 
+add_library(
+        lab_lmdb STATIC
+        LabLmdb.cpp
+        LabLmdb.h
+)
+target_link_libraries(lab_lmdb PUBLIC lmdb_raii)
+
 add_executable(oop-16 main.cpp)
-target_link_libraries(oop-16 PRIVATE lmdb_raii)
+target_link_libraries(oop-16 PRIVATE lab_lmdb)
 
 include(FetchContent)
 FetchContent_Declare(
@@ -49,10 +56,10 @@ target_compile_options(gtest_main PRIVATE -Wno-error)
 
 enable_testing()
 add_executable(oop-16-tests LmdbTest.cpp)
-target_link_libraries(oop-16-tests PRIVATE lmdb_raii GTest::gtest_main)
+target_link_libraries(oop-16-tests PRIVATE lab_lmdb GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(oop-16-tests)
 
 add_executable(oop-16-homework homework.cpp)
-target_link_libraries(oop-16-homework PRIVATE lmdb_raii)
+target_link_libraries(oop-16-homework PRIVATE lab_lmdb)

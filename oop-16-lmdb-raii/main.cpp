@@ -16,55 +16,18 @@
 #include <vector>
 
 #include "Lmdb.h"
+#include "LabLmdb.h"
+
+using lab::freshFile;
+using lab::get;
+using lab::mainTable;
+using lab::put;
+using lab::putAndCommit;
+using lab::readNow;
 
 namespace {
 constexpr unsigned int kNoNamedTables = 0;
 constexpr std::size_t kMapSize = std::size_t{1} << 20U;
-
-// A fresh LMDB file in the temp directory: data file and lock file from the last run removed.
-std::filesystem::path freshFile(std::string_view name) {
-    const std::filesystem::path file =
-        std::filesystem::temp_directory_path() / ("oop16_" + std::string(name) + ".lmdb");
-    std::filesystem::remove(file);
-    std::filesystem::remove(file.string() + "-lock");
-    return file;
-}
-
-// The unnamed main table: works without mdb_env_set_maxdbs.
-MDB_dbi mainTable(const LmdbTxn& txn) {
-    MDB_dbi dbi = 0;
-    lmdbCheck(mdb_dbi_open(txn.get(), nullptr, 0, &dbi), "mdb_dbi_open");
-    return dbi;
-}
-
-void put(const LmdbTxn& txn, std::string_view key, std::string_view value) {
-    MDB_val k = toVal(key);
-    MDB_val v = toVal(value);
-    lmdbCheck(mdb_put(txn.get(), mainTable(txn), &k, &v, 0), "mdb_put");
-}
-
-// A copy of the value: what fromVal() points to is valid only while the transaction lives.
-std::optional<std::string> get(const LmdbTxn& txn, std::string_view key) {
-    MDB_val k = toVal(key);
-    MDB_val v{};
-    const int rc = mdb_get(txn.get(), mainTable(txn), &k, &v);
-    if (rc == MDB_NOTFOUND) {
-        return std::nullopt;
-    }
-    lmdbCheck(rc, "mdb_get");
-    return std::string(fromVal(v));
-}
-
-void putAndCommit(const LmdbEnv& env, std::string_view key, std::string_view value) {
-    LmdbTxn txn(env, LmdbTxn::Mode::kWrite);
-    put(txn, key, value);
-    txn.commit();
-}
-
-std::optional<std::string> readNow(const LmdbEnv& env, std::string_view key) {
-    const LmdbTxn txn(env, LmdbTxn::Mode::kRead);
-    return get(txn, key);
-}
 
 std::string show(const std::optional<std::string>& value) {
     return value ? *value : "(нема)";
