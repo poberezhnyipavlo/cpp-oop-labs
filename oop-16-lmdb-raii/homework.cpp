@@ -1,8 +1,16 @@
 #include <lmdb.h>
 
+#include <cerrno>
+#include <cstddef>
 #include <filesystem>
 #include <iostream>
 #include <memory>
+#include <optional>
+#include <stdexcept>
+#include <string>
+#include <string_view>
+#include <type_traits>
+#include <utility>
 
 #include "LabLmdb.h"
 #include "Lmdb.h"
@@ -217,7 +225,7 @@ void atomicTransfer() {
     } catch (const std::runtime_error& e) {
         std::cout << "зловлено: " << e.what() << "\n";
 
-       printBalances(env, key_a, key_b);
+        printBalances(env, key_a, key_b);
     }
 }
 

@@ -15,8 +15,8 @@
 #include <utility>
 #include <vector>
 
-#include "Lmdb.h"
 #include "LabLmdb.h"
+#include "Lmdb.h"
 
 using lab::freshFile;
 using lab::get;
@@ -131,8 +131,9 @@ void snapshot() {
         {
             std::jthread writter([&env] { putAndCommit(env, "temp", "25"); });
         }
-        std::cout << "новий reader:             temp = " << show(readNow(env, "temp")) << "\n";
+        std::cout << "reader після запису в потоці: temp = " << show(get(reader, "temp")) << "\n";
     }
+    std::cout << "новий reader:             temp = " << show(readNow(env, "temp")) << "\n";
 }
 
 using Experiment = void (*)();
