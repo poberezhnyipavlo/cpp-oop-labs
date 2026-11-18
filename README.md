@@ -2,6 +2,10 @@
 
 A series of small, self-contained C++20 labs on objects, ownership and resource management.
 
+> **Note:** This is a personal learning repository — a hands-on refresher of C++ OOP.
+> The code is written for practice and experimentation (some experiments contain UB on purpose),
+> not for reuse as a library.
+
 I'm a backend developer with 6+ years of PHP/Laravel, moving into C++ (embedded / networking). In PHP an object
 variable is a handle and the garbage collector cleans up; in C++ the variable *is* the object, copying copies the
 object, and destruction happens at a precisely known point. These labs work through what follows from that:
@@ -30,6 +34,7 @@ and read what the compiler or AddressSanitizer says.
 | [oop-13](oop-13-dangling) | Dangling references and views | temporaries and lifetime extension, `string_view` from a temporary, iterator invalidation, reading ASan reports |
 | [oop-14](oop-14-lambdas) | Lambdas | closures as classes, capture modes, `mutable`, `std::function`, `std::jthread` argument copying, `[this]` in event subscriptions |
 | [oop-15](oop-15-templates) | Templates vs virtual functions | instantiation, why templates live in headers, concepts, `std::variant` + `std::visit`, a fixed-size `RingBuffer<T, N>` |
+| [oop-16](oop-16-lmdb-raii) | RAII over a C API | LMDB env/transaction/cursor wrappers, typed errors, move-only handles, `unique_ptr` with custom deleters, atomic transfers, GoogleTest tests |
 
 ## Layout
 
