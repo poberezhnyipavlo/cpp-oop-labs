@@ -52,6 +52,13 @@ oop-NN-topic/
 Some classes travel between labs and grow with them (for example `Tracer`, which logs construction, copies, moves
 and destruction, so you can see exactly when an object is copied or destroyed).
 
+### Who wrote what
+
+- **Experiments** (`main.cpp` and the classes it uses) are study material written with an AI assistant, like
+  examples in a textbook. I ran them, broke them on purpose and changed some of them along the way.
+- **Homework** (`homework.cpp` and the classes it uses) is my own work: each task was solved from a text description
+  without template code, with documentation and search but without generated solutions.
+
 ## Build and run
 
 ```bash
